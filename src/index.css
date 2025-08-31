@@ -2,41 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Kid-friendly Zoo-phonics learning app design system */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@400;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Playful background gradients */
+    --background: 200 100% 97%;
+    --foreground: 220 100% 15%;
 
+    /* Card and surface colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 100% 15%;
+    --card-hover: 200 100% 95%;
 
+    /* Interactive surfaces */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 100% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary colors - Bright Blue */
+    --primary: 195 100% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 195 100% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary colors - Warm Orange */
+    --secondary: 25 100% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 25 100% 55%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Success - Bright Green */
+    --success: 145 85% 55%;
+    --success-foreground: 0 0% 100%;
+    --success-hover: 145 85% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Fun colors for animals */
+    --fun-purple: 270 85% 65%;
+    --fun-pink: 315 85% 65%;
+    --fun-yellow: 50 100% 70%;
+    --fun-red: 355 85% 65%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Muted colors */
+    --muted: 210 25% 92%;
+    --muted-foreground: 220 25% 45%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Accent colors */
+    --accent: 270 85% 65%;
+    --accent-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    /* Utility colors */
+    --destructive: 355 85% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 25% 88%;
+    --input: 210 25% 88%;
+    --ring: 195 100% 55%;
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-rainbow: linear-gradient(135deg, 
+      hsl(var(--primary)) 0%, 
+      hsl(var(--fun-purple)) 25%, 
+      hsl(var(--fun-pink)) 50%, 
+      hsl(var(--secondary)) 75%, 
+      hsl(var(--fun-yellow)) 100%);
+    
+    --gradient-sky: linear-gradient(180deg, 
+      hsl(200 100% 85%) 0%, 
+      hsl(200 100% 97%) 100%);
+    
+    --gradient-card: linear-gradient(145deg, 
+      hsl(0 0% 100%) 0%, 
+      hsl(200 50% 98%) 100%);
+
+    /* Shadows */
+    --shadow-playful: 0 8px 25px -8px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(220 25% 60% / 0.15);
+    --shadow-fun: 0 10px 30px -10px hsl(var(--accent) / 0.4);
+
+    /* Animations */
+    --transition-bouncy: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -94,12 +140,129 @@ All colors MUST be HSL.
   }
 }
 
+}
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-fredoka;
+    background: var(--gradient-sky);
   }
+}
+
+@layer components {
+  /* Animal card animations */
+  .animal-card {
+    @apply relative overflow-hidden rounded-2xl bg-card shadow-lg transition-all duration-300;
+    box-shadow: var(--shadow-card);
+    background: var(--gradient-card);
+  }
+  
+  .animal-card:hover {
+    @apply scale-105 -rotate-1;
+    box-shadow: var(--shadow-playful);
+    transition: var(--transition-bouncy);
+  }
+
+  /* Fun button styles */
+  .fun-button {
+    @apply px-6 py-3 rounded-xl font-bold text-lg transition-all duration-300;
+    box-shadow: var(--shadow-playful);
+  }
+
+  .fun-button:hover {
+    @apply scale-110;
+    transition: var(--transition-bouncy);
+  }
+
+  /* Bouncy animations */
+  .bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  /* Letter display styles */
+  .letter-display {
+    @apply text-6xl font-bold;
+    font-family: 'Comic Neue', cursive;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* Animal name styles */
+  .animal-name {
+    @apply text-2xl font-semibold;
+    font-family: 'Fredoka', sans-serif;
+  }
+
+  /* Language toggle */
+  .language-toggle {
+    @apply px-4 py-2 rounded-full font-medium transition-all duration-300;
+    background: var(--gradient-rainbow);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-rainbow {
+    background: var(--gradient-rainbow);
+  }
+  
+  .bg-gradient-sky {
+    background: var(--gradient-sky);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-playful {
+    box-shadow: var(--shadow-playful);
+  }
+
+  .shadow-fun {
+    box-shadow: var(--shadow-fun);
+  }
+
+  .transition-bouncy {
+    transition: var(--transition-bouncy);
+  }
+}
+
+/* Keyframe animations */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  70% {
+    transform: scale(0.9) translateY(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0px);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
 }
