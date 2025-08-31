@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'fredoka': ['Fredoka', 'sans-serif'],
-				'comic': ['Comic Neue', 'cursive'],
+				'shooting-star': ['Shooting Star', 'cursive'],
+				'poppins': ['Poppins', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

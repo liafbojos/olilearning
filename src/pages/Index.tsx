@@ -46,14 +46,14 @@ const Index = () => {
     <div className="min-h-screen bg-background p-4">
       {/* Header */}
       <header className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-bold text-primary mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-primary mb-4 font-shooting-star">
           Zoo-phonics Learning
           <Sparkles 
             className="inline-block ml-2 h-8 w-8" 
             style={{ color: '#FBBD4C' }}
           />
         </h1>
-        <p className="text-xl text-foreground mb-6">
+        <p className="text-xl text-foreground mb-6 font-poppins">
           Learn letters with animal friends in English & Spanish!
         </p>
         
@@ -93,7 +93,7 @@ const Index = () => {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-lg">
             <BookOpen className="h-5 w-5 text-primary" />
-            <span className="font-medium text-primary">
+            <span className="font-medium text-primary font-poppins">
               {currentLanguage === 'english' 
                 ? 'Click each animal to hear their sound!' 
                 : '¡Haz clic en cada animal para escuchar su sonido!'
@@ -119,7 +119,7 @@ const Index = () => {
               </div>
               
               {/* Animal Name */}
-              <h3 className="text-2xl font-bold text-foreground text-center mb-2">
+              <h3 className="text-2xl font-bold text-foreground text-center mb-2 font-shooting-star">
                 {animal.animalName[currentLanguage]}
               </h3>
               
@@ -149,7 +149,7 @@ const Index = () => {
 
         {/* Learning Activities */}
         <section className="text-center">
-          <h2 className="text-3xl font-bold text-primary mb-6">
+          <h2 className="text-3xl font-bold text-primary mb-6 font-shooting-star">
             {currentLanguage === 'english' ? 'Learning Activities' : 'Actividades de Aprendizaje'}
           </h2>
           
@@ -158,10 +158,10 @@ const Index = () => {
               <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-shooting-star">
                 {currentLanguage === 'english' ? 'Letter Recognition' : 'Reconocimiento de Letras'}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
                   ? 'Learn letter shapes and sounds with animal friends' 
                   : 'Aprende las formas y sonidos de las letras'
@@ -173,10 +173,10 @@ const Index = () => {
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe2 className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-shooting-star">
                 {currentLanguage === 'english' ? 'Bilingual Learning' : 'Aprendizaje Bilingüe'}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
                   ? 'Practice in both English and Spanish' 
                   : 'Practica en inglés y español'
@@ -191,10 +191,10 @@ const Index = () => {
               >
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2 font-shooting-star">
                 {currentLanguage === 'english' ? 'Motion Memory' : 'Memoria de Movimientos'}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
                   ? 'Remember letters through body movements' 
                   : 'Recuerda las letras con movimientos'

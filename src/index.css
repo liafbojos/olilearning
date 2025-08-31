@@ -148,7 +148,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-fredoka;
+    @apply bg-background text-foreground font-poppins;
     background: var(--gradient-sky);
   }
 }
@@ -190,14 +190,19 @@
   /* Letter display styles */
   .letter-display {
     @apply text-6xl font-bold;
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Shooting Star', cursive;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   }
 
   /* Animal name styles */
   .animal-name {
     @apply text-2xl font-semibold;
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Shooting Star', cursive;
+  }
+
+  /* Heading styles */
+  .heading-font {
+    font-family: 'Shooting Star', cursive;
   }
 
   /* Language toggle */
