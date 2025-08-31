@@ -2,57 +2,16 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, BookOpen, Globe2, Volume2 } from 'lucide-react';
 import WordDoodleActivity from '@/components/WordDoodleActivity';
-
-// Simple animal data for testing
-const animals = [
-  {
-    letter: 'A',
-    animalName: { 
-      english: 'Alligator', 
-      spanish: 'Abeja' // Bee - starts with A
-    },
-    motion: 'Snap arms like alligator jaws',
-  },
-  {
-    letter: 'B', 
-    animalName: { 
-      english: 'Bear', 
-      spanish: 'Ballena' // Whale - starts with B
-    },
-    motion: 'Hug yourself like a bear',
-  },
-  {
-    letter: 'C',
-    animalName: { 
-      english: 'Cat', 
-      spanish: 'Conejo' // Rabbit - starts with C
-    },
-    motion: 'Scratch with claws like a cat',
-  },
-  {
-    letter: 'D',
-    animalName: { 
-      english: 'Dog', 
-      spanish: 'Delfín' // Dolphin - starts with D
-    },
-    motion: 'Pant with tongue out like a dog',
-  }
-];
+import { zooPhonicsAlphabet, playAnimalSound } from '@/data/zooPhonicsAlphabet';
 
 // Color constants based on specified palette
-const colorPalette = ['#ED6956', '#FBBD4C', '#f3a9b0', '#91adc6'];
+const colorPalette = ['#ED6956', '#FBBD4C', '#f3a9b0', '#91adc6', '#97c0c0', '#ecd8d0'];
 
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState<'english' | 'spanish'>('english');
 
-  const playSound = (animal: typeof animals[0]) => {
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(
-        `${animal.letter}. ${animal.animalName[currentLanguage]}`
-      );
-      utterance.lang = currentLanguage === 'english' ? 'en-US' : 'es-ES';
-      speechSynthesis.speak(utterance);
-    }
+  const playSound = (animal: typeof zooPhonicsAlphabet[0]) => {
+    playAnimalSound(animal, currentLanguage);
   };
 
   return (
@@ -125,30 +84,34 @@ const Index = () => {
           </div>
 
           {/* Animal Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {animals.map((animal, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-8">
+            {zooPhonicsAlphabet.map((animal, index) => (
               <div 
                 key={animal.letter} 
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
+                className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
                 onClick={() => playSound(animal)}
               >
                 {/* Letter */}
                 <div 
-                  className="text-6xl font-bold text-center mb-4"
-                  style={{ color: colorPalette[index % 4] }}
+                  className="text-4xl font-bold text-center mb-3 font-shooting-star"
+                  style={{ color: colorPalette[index % colorPalette.length] }}
                 >
                   {animal.letter}
                 </div>
                 
+                {/* Animal Image */}
+                <div className="mb-3">
+                  <img
+                    src={animal.imageSrc}
+                    alt={animal.animalName[currentLanguage]}
+                    className="w-full h-24 object-contain rounded-lg"
+                  />
+                </div>
+                
                 {/* Animal Name */}
-                <h3 className="text-2xl font-bold text-foreground text-center mb-2 font-shooting-star">
+                <h3 className="text-sm font-bold text-foreground text-center mb-2 font-shooting-star">
                   {animal.animalName[currentLanguage]}
                 </h3>
-                
-                {/* Motion */}
-                <p className="text-sm text-muted-foreground text-center bg-muted rounded-lg p-2 mb-4">
-                  <strong>Motion:</strong> {animal.motion}
-                </p>
                 
                 {/* Play Button */}
                 <Button 
@@ -156,14 +119,14 @@ const Index = () => {
                     e.stopPropagation();
                     playSound(animal);
                   }}
-                  className="w-full text-white"
+                  className="w-full text-white text-xs py-1"
                   style={{ 
-                    backgroundColor: colorPalette[index % 4],
+                    backgroundColor: colorPalette[index % colorPalette.length],
                     border: 'none'
                   }}
                 >
-                  <Volume2 className="mr-2 h-4 w-4" />
-                  {currentLanguage === 'english' ? 'Play Sound' : 'Reproducir'}
+                  <Volume2 className="mr-1 h-3 w-3" />
+                  {currentLanguage === 'english' ? 'Play' : 'Reproducir'}
                 </Button>
               </div>
             ))}
