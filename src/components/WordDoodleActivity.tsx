@@ -4,9 +4,7 @@ import { Check, X, RotateCcw, Trophy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { wordDoodles, doodleImages, getRandomIncorrectDoodles, shuffleArray } from '@/data/wordDoodleData';
 
-interface WordDoodleActivityProps {
-  currentLanguage: 'english' | 'spanish';
-}
+interface WordDoodleActivityProps {}
 
 interface DoodleOption {
   id: string;
@@ -14,7 +12,7 @@ interface DoodleOption {
   isCorrect: boolean;
 }
 
-const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
+const WordDoodleActivity = ({}: WordDoodleActivityProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
@@ -62,16 +60,14 @@ const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
     if (isCorrect) {
       setScore(prev => prev + 1);
       toast({
-        title: currentLanguage === 'english' ? "Correct! 🎉" : "¡Correcto! 🎉",
-        description: currentWord.description[currentLanguage],
+        title: "¡Correcto! 🎉",
+        description: currentWord.description.spanish,
         duration: 2000,
       });
     } else {
       toast({
-        title: currentLanguage === 'english' ? "Try again! 💪" : "¡Inténtalo de nuevo! 💪",
-        description: currentLanguage === 'english' 
-          ? "Look at the word and think about what it means!" 
-          : "¡Mira la palabra y piensa en lo que significa!",
+        title: "¡Inténtalo de nuevo! 💪",
+        description: "¡Mira la palabra y piensa en lo que significa!",
         duration: 2000,
         variant: "destructive",
       });
@@ -84,10 +80,8 @@ const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
     } else {
       // Game completed
       toast({
-        title: currentLanguage === 'english' ? "Great job! 🏆" : "¡Excelente trabajo! 🏆",
-        description: currentLanguage === 'english' 
-          ? `You got ${score + (showResult && selectedOption === currentWord.correctDoodle ? 1 : 0)} out of ${totalQuestions + 1} correct!`
-          : `¡Obtuviste ${score + (showResult && selectedOption === currentWord.correctDoodle ? 1 : 0)} de ${totalQuestions + 1} correctas!`,
+        title: "¡Excelente trabajo! 🏆",
+        description: `¡Obtuviste ${score + (showResult && selectedOption === currentWord.correctDoodle ? 1 : 0)} de ${totalQuestions + 1} correctas!`,
         duration: 4000,
       });
       handleRestart();
@@ -120,19 +114,16 @@ const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
             className="text-primary hover:bg-primary/10"
           >
             <RotateCcw className="h-4 w-4 mr-1" />
-            {currentLanguage === 'english' ? 'Restart' : 'Reiniciar'}
+            Reiniciar
           </Button>
         </div>
         
         <h3 className="text-2xl font-bold text-primary mb-2 font-shooting-star">
-          {currentLanguage === 'english' ? 'Word & Doodle Match' : 'Palabras y Dibujos'}
+          Palabras y Dibujos
         </h3>
         
         <p className="text-muted-foreground mb-6 font-poppins">
-          {currentLanguage === 'english' 
-            ? 'Read the word and click on the matching doodle!'
-            : '¡Lee la palabra y haz clic en el dibujo que corresponde!'
-          }
+          ¡Lee la palabra y haz clic en el dibujo que corresponde!
         </p>
 
         {/* Word Display */}
@@ -141,10 +132,10 @@ const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
             className="text-6xl font-bold mb-2 font-shooting-star"
             style={{ color: '#ED6956' }} // coral color
           >
-            {currentWord.word[currentLanguage]}
+            {currentWord.word.spanish}
           </div>
           <div className="text-lg text-muted-foreground font-poppins">
-            ({currentLanguage === 'english' ? currentWord.word.spanish : currentWord.word.english})
+            ({currentWord.word.english})
           </div>
         </div>
       </div>
@@ -209,8 +200,8 @@ const WordDoodleActivity = ({ currentLanguage }: WordDoodleActivityProps) => {
             size="lg"
           >
             {currentWordIndex < wordDoodles.length - 1 
-              ? (currentLanguage === 'english' ? 'Next Word' : 'Siguiente Palabra')
-              : (currentLanguage === 'english' ? 'Finish Game' : 'Terminar Juego')
+              ? 'Siguiente Palabra'
+              : 'Terminar Juego'
             }
           </Button>
         </div>
