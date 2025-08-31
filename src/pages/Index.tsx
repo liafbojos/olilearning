@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, BookOpen, Globe2, Volume2 } from 'lucide-react';
+import WordDoodleActivity from '@/components/WordDoodleActivity';
 
 // Simple animal data for testing
 const animals = [
@@ -148,7 +149,7 @@ const Index = () => {
         </div>
 
         {/* Learning Activities */}
-        <section className="text-center">
+        <section className="text-center mb-12">
           <h2 className="text-3xl font-bold text-primary mb-6 font-shooting-star">
             {currentLanguage === 'english' ? 'Learning Activities' : 'Actividades de Aprendizaje'}
           </h2>
@@ -202,6 +203,11 @@ const Index = () => {
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Word-Doodle Matching Activity */}
+        <section className="mb-12">
+          <WordDoodleActivity currentLanguage={currentLanguage} />
         </section>
       </main>
     </div>
