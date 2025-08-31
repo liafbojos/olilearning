@@ -7,78 +7,79 @@
 
 @layer base {
   :root {
-    /* Playful background gradients */
-    --background: 200 100% 97%;
-    --foreground: 220 100% 15%;
+    /* Custom color palette - using only specified hex colors converted to HSL */
+    --background: 0 0% 98%;
+    --foreground: 213 35% 30%;
 
     /* Card and surface colors */
     --card: 0 0% 100%;
-    --card-foreground: 220 100% 15%;
-    --card-hover: 200 100% 95%;
+    --card-foreground: 213 35% 30%;
+    --card-hover: 180 28% 95%;
 
     /* Interactive surfaces */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 100% 15%;
+    --popover-foreground: 213 35% 30%;
 
-    /* Primary colors - Bright Blue */
-    --primary: 195 100% 55%;
+    /* Primary colors - Blue (#91adc6) */
+    --primary: 213 35% 67%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 195 100% 45%;
+    --primary-hover: 213 35% 57%;
 
-    /* Secondary colors - Warm Orange */
-    --secondary: 25 100% 65%;
+    /* Secondary colors - Coral (#ED6956) */
+    --secondary: 7 79% 63%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-hover: 25 100% 55%;
+    --secondary-hover: 7 79% 53%;
 
-    /* Success - Bright Green */
-    --success: 145 85% 55%;
+    /* Success/Accent - Teal (#97c0c0) */
+    --success: 180 28% 67%;
     --success-foreground: 0 0% 100%;
-    --success-hover: 145 85% 45%;
+    --success-hover: 180 28% 57%;
 
-    /* Fun colors for animals */
-    --fun-purple: 270 85% 65%;
-    --fun-pink: 315 85% 65%;
-    --fun-yellow: 50 100% 70%;
-    --fun-red: 355 85% 65%;
+    /* Custom colors from palette */
+    --color-coral: 7 79% 63%;      /* #ED6956 */
+    --color-yellow: 43 95% 64%;    /* #FBBD4C */
+    --color-pink: 353 59% 81%;     /* #f3a9b0 */
+    --color-blue: 213 35% 67%;     /* #91adc6 */
+    --color-teal: 180 28% 67%;     /* #97c0c0 */
 
-    /* Muted colors */
-    --muted: 210 25% 92%;
-    --muted-foreground: 220 25% 45%;
+    /* Muted colors using teal tones */
+    --muted: 180 28% 90%;
+    --muted-foreground: 213 35% 45%;
 
-    /* Accent colors */
-    --accent: 270 85% 65%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent colors - Pink */
+    --accent: 353 59% 81%;
+    --accent-foreground: 213 35% 30%;
 
     /* Utility colors */
-    --destructive: 355 85% 65%;
+    --destructive: 7 79% 63%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 25% 88%;
-    --input: 210 25% 88%;
-    --ring: 195 100% 55%;
+    --border: 180 28% 85%;
+    --input: 180 28% 85%;
+    --ring: 213 35% 67%;
 
     --radius: 1rem;
 
-    /* Gradients */
+    /* Custom gradients using only specified colors */
     --gradient-rainbow: linear-gradient(135deg, 
-      hsl(var(--primary)) 0%, 
-      hsl(var(--fun-purple)) 25%, 
-      hsl(var(--fun-pink)) 50%, 
-      hsl(var(--secondary)) 75%, 
-      hsl(var(--fun-yellow)) 100%);
+      hsl(213 35% 67%) 0%,     /* blue */
+      hsl(180 28% 67%) 25%,    /* teal */
+      hsl(353 59% 81%) 50%,    /* pink */
+      hsl(7 79% 63%) 75%,      /* coral */
+      hsl(43 95% 64%) 100%);   /* yellow */
     
     --gradient-sky: linear-gradient(180deg, 
-      hsl(200 100% 85%) 0%, 
-      hsl(200 100% 97%) 100%);
+      hsl(213 35% 85%) 0%, 
+      hsl(180 28% 95%) 100%);
     
     --gradient-card: linear-gradient(145deg, 
       hsl(0 0% 100%) 0%, 
-      hsl(200 50% 98%) 100%);
+      hsl(180 28% 98%) 100%);
 
-    /* Shadows */
-    --shadow-playful: 0 8px 25px -8px hsl(var(--primary) / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(220 25% 60% / 0.15);
-    --shadow-fun: 0 10px 30px -10px hsl(var(--accent) / 0.4);
+    /* Shadows using custom colors */
+    --shadow-playful: 0 8px 25px -8px hsl(213 35% 67% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(180 28% 67% / 0.15);
+    --shadow-fun: 0 10px 30px -10px hsl(353 59% 81% / 0.4);
 
     /* Animations */
     --transition-bouncy: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);

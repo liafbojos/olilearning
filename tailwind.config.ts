@@ -43,10 +43,12 @@ export default {
 					foreground: 'hsl(var(--success-foreground))',
 					hover: 'hsl(var(--success-hover))'
 				},
-				'fun-purple': 'hsl(var(--fun-purple))',
-				'fun-pink': 'hsl(var(--fun-pink))',
-				'fun-yellow': 'hsl(var(--fun-yellow))',
-				'fun-red': 'hsl(var(--fun-red))',
+				// Custom colors from specified palette
+				coral: 'hsl(var(--color-coral))',      // #ED6956
+				yellow: 'hsl(var(--color-yellow))',    // #FBBD4C  
+				pink: 'hsl(var(--color-pink))',        // #f3a9b0
+				blue: 'hsl(var(--color-blue))',        // #91adc6
+				teal: 'hsl(var(--color-teal))',        // #97c0c0
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'

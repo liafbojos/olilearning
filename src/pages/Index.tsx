@@ -26,6 +26,9 @@ const animals = [
   }
 ];
 
+// Color constants based on specified palette
+const colorPalette = ['#ED6956', '#FBBD4C', '#f3a9b0', '#91adc6'];
+
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState<'english' | 'spanish'>('english');
 
@@ -40,24 +43,31 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-teal-50 p-4">
       {/* Header */}
       <header className="text-center mb-8">
-        <h1 className="text-4xl md:text-6xl font-bold text-blue-600 mb-4">
+        <h1 className="text-4xl md:text-6xl font-bold text-primary mb-4">
           Zoo-phonics Learning
-          <Sparkles className="inline-block ml-2 h-8 w-8 text-yellow-500" />
+          <Sparkles 
+            className="inline-block ml-2 h-8 w-8" 
+            style={{ color: '#FBBD4C' }}
+          />
         </h1>
-        <p className="text-xl text-gray-600 mb-6">
+        <p className="text-xl text-foreground mb-6">
           Learn letters with animal friends in English & Spanish!
         </p>
         
         {/* Language Toggle */}
         <div className="flex items-center justify-center space-x-2 bg-white rounded-full p-1 shadow-lg max-w-xs mx-auto">
-          <Globe2 className="h-5 w-5 text-blue-600 ml-2" />
+          <Globe2 className="h-5 w-5 text-primary ml-2" />
           <Button
             variant={currentLanguage === 'english' ? 'default' : 'ghost'}
             size="sm"
-            className="rounded-full"
+            className={`rounded-full ${
+              currentLanguage === 'english' 
+                ? 'bg-primary text-primary-foreground' 
+                : 'hover:bg-primary/10 text-primary'
+            }`}
             onClick={() => setCurrentLanguage('english')}
           >
             English
@@ -65,7 +75,11 @@ const Index = () => {
           <Button
             variant={currentLanguage === 'spanish' ? 'default' : 'ghost'}
             size="sm"
-            className="rounded-full"
+            className={`rounded-full ${
+              currentLanguage === 'spanish' 
+                ? 'bg-secondary text-secondary-foreground' 
+                : 'hover:bg-secondary/10 text-secondary'
+            }`}
             onClick={() => setCurrentLanguage('spanish')}
           >
             Español
@@ -78,8 +92,8 @@ const Index = () => {
         {/* Instructions */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-lg">
-            <BookOpen className="h-5 w-5 text-blue-600" />
-            <span className="font-medium text-blue-600">
+            <BookOpen className="h-5 w-5 text-primary" />
+            <span className="font-medium text-primary">
               {currentLanguage === 'english' 
                 ? 'Click each animal to hear their sound!' 
                 : '¡Haz clic en cada animal para escuchar su sonido!'
@@ -90,24 +104,27 @@ const Index = () => {
 
         {/* Animal Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {animals.map((animal) => (
+          {animals.map((animal, index) => (
             <div 
               key={animal.letter} 
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
               onClick={() => playSound(animal)}
             >
               {/* Letter */}
-              <div className="text-6xl font-bold text-orange-500 text-center mb-4">
+              <div 
+                className="text-6xl font-bold text-center mb-4"
+                style={{ color: colorPalette[index % 4] }}
+              >
                 {animal.letter}
               </div>
               
               {/* Animal Name */}
-              <h3 className="text-2xl font-bold text-gray-800 text-center mb-2">
+              <h3 className="text-2xl font-bold text-foreground text-center mb-2">
                 {animal.animalName[currentLanguage]}
               </h3>
               
               {/* Motion */}
-              <p className="text-sm text-gray-600 text-center bg-gray-100 rounded-lg p-2 mb-4">
+              <p className="text-sm text-muted-foreground text-center bg-muted rounded-lg p-2 mb-4">
                 <strong>Motion:</strong> {animal.motion}
               </p>
               
@@ -117,7 +134,11 @@ const Index = () => {
                   e.stopPropagation();
                   playSound(animal);
                 }}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white"
+                className="w-full text-white"
+                style={{ 
+                  backgroundColor: colorPalette[index % 4],
+                  border: 'none'
+                }}
               >
                 <Volume2 className="mr-2 h-4 w-4" />
                 {currentLanguage === 'english' ? 'Play Sound' : 'Reproducir'}
@@ -128,19 +149,19 @@ const Index = () => {
 
         {/* Learning Activities */}
         <section className="text-center">
-          <h2 className="text-3xl font-bold text-blue-600 mb-6">
+          <h2 className="text-3xl font-bold text-primary mb-6">
             {currentLanguage === 'english' ? 'Learning Activities' : 'Actividades de Aprendizaje'}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 {currentLanguage === 'english' ? 'Letter Recognition' : 'Reconocimiento de Letras'}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 {currentLanguage === 'english' 
                   ? 'Learn letter shapes and sounds with animal friends' 
                   : 'Aprende las formas y sonidos de las letras'
@@ -148,14 +169,14 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
                 <Globe2 className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 {currentLanguage === 'english' ? 'Bilingual Learning' : 'Aprendizaje Bilingüe'}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 {currentLanguage === 'english' 
                   ? 'Practice in both English and Spanish' 
                   : 'Practica en inglés y español'
@@ -163,14 +184,17 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <div 
+                className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                style={{ backgroundColor: '#97c0c0' }}
+              >
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-foreground mb-2">
                 {currentLanguage === 'english' ? 'Motion Memory' : 'Memoria de Movimientos'}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 {currentLanguage === 'english' 
                   ? 'Remember letters through body movements' 
                   : 'Recuerda las letras con movimientos'
