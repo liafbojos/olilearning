@@ -60,14 +60,14 @@ const Index = () => {
       {/* Header */}
       <header className="text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-bold text-primary mb-4 font-shooting-star">
-          Zoo-phonics Learning
+          Oli Learning
           <Sparkles 
             className="inline-block ml-2 h-8 w-8" 
             style={{ color: '#FBBD4C' }}
           />
         </h1>
         <p className="text-xl text-foreground mb-6 font-poppins">
-          Learn letters with animal friends in English & Spanish!
+          Fun learning activities for kids in English & Spanish!
         </p>
         
         {/* Language Toggle */}
@@ -102,68 +102,78 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="container mx-auto max-w-6xl">
-        {/* Instructions */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-lg">
-            <BookOpen className="h-5 w-5 text-primary" />
-            <span className="font-medium text-primary font-poppins">
-              {currentLanguage === 'english' 
-                ? 'Click each animal to hear their sound!' 
-                : '¡Haz clic en cada animal para escuchar su sonido!'
-              }
-            </span>
-          </div>
-        </div>
+        {/* Word-Doodle Matching Activity */}
+        <section className="mb-12">
+          <WordDoodleActivity currentLanguage={currentLanguage} />
+        </section>
 
-        {/* Animal Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {animals.map((animal, index) => (
-            <div 
-              key={animal.letter} 
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
-              onClick={() => playSound(animal)}
-            >
-              {/* Letter */}
-              <div 
-                className="text-6xl font-bold text-center mb-4"
-                style={{ color: colorPalette[index % 4] }}
-              >
-                {animal.letter}
-              </div>
-              
-              {/* Animal Name */}
-              <h3 className="text-2xl font-bold text-foreground text-center mb-2 font-shooting-star">
-                {animal.animalName[currentLanguage]}
-              </h3>
-              
-              {/* Motion */}
-              <p className="text-sm text-muted-foreground text-center bg-muted rounded-lg p-2 mb-4">
-                <strong>Motion:</strong> {animal.motion}
-              </p>
-              
-              {/* Play Button */}
-              <Button 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  playSound(animal);
-                }}
-                className="w-full text-white"
-                style={{ 
-                  backgroundColor: colorPalette[index % 4],
-                  border: 'none'
-                }}
-              >
-                <Volume2 className="mr-2 h-4 w-4" />
-                {currentLanguage === 'english' ? 'Play Sound' : 'Reproducir'}
-              </Button>
+        {/* Zoo-phonics Activity Section */}
+        <section className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-primary mb-4 font-shooting-star">
+              {currentLanguage === 'english' ? 'Zoo-phonics Letters' : 'Letras Zoo-fonéticas'}
+            </h2>
+            <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-lg">
+              <BookOpen className="h-5 w-5 text-primary" />
+              <span className="font-medium text-primary font-poppins">
+                {currentLanguage === 'english' 
+                  ? 'Click each animal to hear their sound!' 
+                  : '¡Haz clic en cada animal para escuchar su sonido!'
+                }
+              </span>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Learning Activities */}
-        <section className="text-center mb-12">
+          {/* Animal Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {animals.map((animal, index) => (
+              <div 
+                key={animal.letter} 
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
+                onClick={() => playSound(animal)}
+              >
+                {/* Letter */}
+                <div 
+                  className="text-6xl font-bold text-center mb-4"
+                  style={{ color: colorPalette[index % 4] }}
+                >
+                  {animal.letter}
+                </div>
+                
+                {/* Animal Name */}
+                <h3 className="text-2xl font-bold text-foreground text-center mb-2 font-shooting-star">
+                  {animal.animalName[currentLanguage]}
+                </h3>
+                
+                {/* Motion */}
+                <p className="text-sm text-muted-foreground text-center bg-muted rounded-lg p-2 mb-4">
+                  <strong>Motion:</strong> {animal.motion}
+                </p>
+                
+                {/* Play Button */}
+                <Button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    playSound(animal);
+                  }}
+                  className="w-full text-white"
+                  style={{ 
+                    backgroundColor: colorPalette[index % 4],
+                    border: 'none'
+                  }}
+                >
+                  <Volume2 className="mr-2 h-4 w-4" />
+                  {currentLanguage === 'english' ? 'Play Sound' : 'Reproducir'}
+                </Button>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* About Learning Activities */}
+        <section className="text-center">
           <h2 className="text-3xl font-bold text-primary mb-6 font-shooting-star">
-            {currentLanguage === 'english' ? 'Learning Activities' : 'Actividades de Aprendizaje'}
+            {currentLanguage === 'english' ? 'Why Oli Learning?' : '¿Por qué Oli Learning?'}
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -172,12 +182,12 @@ const Index = () => {
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2 font-shooting-star">
-                {currentLanguage === 'english' ? 'Letter Recognition' : 'Reconocimiento de Letras'}
+                {currentLanguage === 'english' ? 'Interactive Learning' : 'Aprendizaje Interactivo'}
               </h3>
               <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
-                  ? 'Learn letter shapes and sounds with animal friends' 
-                  : 'Aprende las formas y sonidos de las letras'
+                  ? 'Hands-on activities that make learning fun and engaging' 
+                  : 'Actividades prácticas que hacen el aprendizaje divertido'
                 }
               </p>
             </div>
@@ -191,8 +201,8 @@ const Index = () => {
               </h3>
               <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
-                  ? 'Practice in both English and Spanish' 
-                  : 'Practica en inglés y español'
+                  ? 'Learn in both English and Spanish with seamless switching' 
+                  : 'Aprende en inglés y español con cambio fluido'
                 }
               </p>
             </div>
@@ -205,21 +215,16 @@ const Index = () => {
                 <BookOpen className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2 font-shooting-star">
-                {currentLanguage === 'english' ? 'Motion Memory' : 'Memoria de Movimientos'}
+                {currentLanguage === 'english' ? 'Multiple Activities' : 'Múltiples Actividades'}
               </h3>
               <p className="text-muted-foreground font-poppins">
                 {currentLanguage === 'english' 
-                  ? 'Remember letters through body movements' 
-                  : 'Recuerda las letras con movimientos'
+                  ? 'Various learning games to keep children engaged' 
+                  : 'Varios juegos educativos para mantener a los niños comprometidos'
                 }
               </p>
             </div>
           </div>
-        </section>
-
-        {/* Word-Doodle Matching Activity */}
-        <section className="mb-12">
-          <WordDoodleActivity currentLanguage={currentLanguage} />
         </section>
       </main>
     </div>
