@@ -1,18 +1,10 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Sparkles, BookOpen, Globe2, Volume2 } from 'lucide-react';
+import { Sparkles, BookOpen, Globe2 } from 'lucide-react';
 import WordDoodleActivity from '@/components/WordDoodleActivity';
-import { zooPhonicsAlphabet, playAnimalSound } from '@/data/zooPhonicsAlphabet';
-
-// Color constants based on specified palette
-const colorPalette = ['#ED6956', '#FBBD4C', '#f3a9b0', '#91adc6', '#97c0c0', '#ecd8d0'];
 
 const Index = () => {
   const [currentLanguage, setCurrentLanguage] = useState<'english' | 'spanish'>('english');
-
-  const playSound = (animal: typeof zooPhonicsAlphabet[0]) => {
-    playAnimalSound(animal, currentLanguage);
-  };
 
   return (
     <div className="min-h-screen bg-background p-4">
@@ -66,72 +58,6 @@ const Index = () => {
           <WordDoodleActivity currentLanguage={currentLanguage} />
         </section>
 
-        {/* Zoo-phonics Activity Section */}
-        <section className="mb-12">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-primary mb-4 font-shooting-star">
-              {currentLanguage === 'english' ? 'Zoo-phonics Letters' : 'Letras Zoo-fonéticas'}
-            </h2>
-            <div className="inline-flex items-center gap-2 bg-white rounded-full px-6 py-3 shadow-lg">
-              <BookOpen className="h-5 w-5 text-primary" />
-              <span className="font-medium text-primary font-poppins">
-                {currentLanguage === 'english' 
-                  ? 'Click each animal to hear their sound!' 
-                  : '¡Haz clic en cada animal para escuchar su sonido!'
-                }
-              </span>
-            </div>
-          </div>
-
-          {/* Animal Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-8">
-            {zooPhonicsAlphabet.map((animal, index) => (
-              <div 
-                key={animal.letter} 
-                className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer border-2 border-transparent hover:border-accent"
-                onClick={() => playSound(animal)}
-              >
-                {/* Letter */}
-                <div 
-                  className="text-4xl font-bold text-center mb-3 font-shooting-star"
-                  style={{ color: colorPalette[index % colorPalette.length] }}
-                >
-                  {animal.letter}
-                </div>
-                
-                {/* Animal Image */}
-                <div className="mb-3">
-                  <img
-                    src={animal.imageSrc}
-                    alt={animal.animalName[currentLanguage]}
-                    className="w-full h-24 object-contain rounded-lg"
-                  />
-                </div>
-                
-                {/* Animal Name */}
-                <h3 className="text-sm font-bold text-foreground text-center mb-2 font-shooting-star">
-                  {animal.animalName[currentLanguage]}
-                </h3>
-                
-                {/* Play Button */}
-                <Button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    playSound(animal);
-                  }}
-                  className="w-full text-white text-xs py-1"
-                  style={{ 
-                    backgroundColor: colorPalette[index % colorPalette.length],
-                    border: 'none'
-                  }}
-                >
-                  <Volume2 className="mr-1 h-3 w-3" />
-                  {currentLanguage === 'english' ? 'Play' : 'Reproducir'}
-                </Button>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* About Learning Activities */}
         <section className="text-center">
