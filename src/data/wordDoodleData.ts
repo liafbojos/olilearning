@@ -12,177 +12,149 @@ export interface WordDoodle {
   };
 }
 
-import sunImg from '@/assets/doodles/sun-generated.png';
-import houseImg from '@/assets/doodles/house.jpg';
-import carImg from '@/assets/doodles/car.jpg';
-import ballImg from '@/assets/doodles/ball.jpg';
-import flowerImg from '@/assets/doodles/flower.jpg';
-import treeImg from '@/assets/doodles/tree.jpg';
-import catImg from '@/assets/doodles/cat.png';
-import dogImg from '@/assets/doodles/dog.png';
-import fishImg from '@/assets/doodles/fish.png';
-import birdImg from '@/assets/doodles/bird.png';
-import heartImg from '@/assets/doodles/heart.png';
-import starImg from '@/assets/doodles/star.png';
+import solImg from '@/assets/doodles/sun-generated.png';
+import gatoImg from '@/assets/doodles/cat.png';
+import florImg from '@/assets/doodles/flower.jpg';
+import carroImg from '@/assets/doodles/car.jpg';
+import pezImg from '@/assets/doodles/fish.png';
+import camaImg from '@/assets/doodles/cama.png';
+import casaImg from '@/assets/doodles/house.jpg';
+import perroImg from '@/assets/doodles/dog.png';
+import arbolImg from '@/assets/doodles/tree.jpg';
+import patoImg from '@/assets/doodles/pato.png';
 
 export const doodleImages = {
-  sun: sunImg,
-  house: houseImg,
-  car: carImg,
-  ball: ballImg,
-  flower: flowerImg,
-  tree: treeImg,
-  cat: catImg,
-  dog: dogImg,
-  fish: fishImg,
-  bird: birdImg,
-  heart: heartImg,
-  star: starImg,
+  sol: solImg,
+  gato: gatoImg,
+  flor: florImg,
+  carro: carroImg,
+  pez: pezImg,
+  cama: camaImg,
+  casa: casaImg,
+  perro: perroImg,
+  arbol: arbolImg,
+  pato: patoImg,
 };
 
 export const wordDoodles: WordDoodle[] = [
   {
-    id: 'sun',
+    id: 'sol',
     word: {
       english: 'SUN',
       spanish: 'SOL'
     },
-    correctDoodle: 'sun',
+    correctDoodle: 'sol',
     description: {
       english: 'The bright yellow star in our sky',
       spanish: 'La estrella amarilla brillante en nuestro cielo'
     }
   },
   {
-    id: 'house',
-    word: {
-      english: 'HOUSE',
-      spanish: 'CASA'
-    },
-    correctDoodle: 'house',
-    description: {
-      english: 'A place where people live',
-      spanish: 'Un lugar donde vive la gente'
-    }
-  },
-  {
-    id: 'car',
-    word: {
-      english: 'CAR',
-      spanish: 'CARRO'
-    },
-    correctDoodle: 'car',
-    description: {
-      english: 'A vehicle with four wheels',
-      spanish: 'Un vehículo con cuatro ruedas'
-    }
-  },
-  {
-    id: 'ball',
-    word: {
-      english: 'BALL',
-      spanish: 'PELOTA'
-    },
-    correctDoodle: 'ball',
-    description: {
-      english: 'A round toy you can throw and catch',
-      spanish: 'Un juguete redondo que puedes lanzar y atrapar'
-    }
-  },
-  {
-    id: 'flower',
-    word: {
-      english: 'FLOWER',
-      spanish: 'FLOR'
-    },
-    correctDoodle: 'flower',
-    description: {
-      english: 'A beautiful colorful plant',
-      spanish: 'Una hermosa planta colorida'
-    }
-  },
-  {
-    id: 'tree',
-    word: {
-      english: 'TREE',
-      spanish: 'ÁRBOL'
-    },
-    correctDoodle: 'tree',
-    description: {
-      english: 'A tall plant with branches and leaves',
-      spanish: 'Una planta alta con ramas y hojas'
-    }
-  },
-  {
-    id: 'cat',
+    id: 'gato',
     word: {
       english: 'CAT',
       spanish: 'GATO'
     },
-    correctDoodle: 'cat',
+    correctDoodle: 'gato',
     description: {
       english: 'A furry pet that meows',
       spanish: 'Una mascota peluda que maúlla'
     }
   },
   {
-    id: 'dog',
+    id: 'flor',
     word: {
-      english: 'DOG',
-      spanish: 'PERRO'
+      english: 'FLOWER',
+      spanish: 'FLOR'
     },
-    correctDoodle: 'dog',
+    correctDoodle: 'flor',
     description: {
-      english: 'A loyal pet that barks',
-      spanish: 'Una mascota leal que ladra'
+      english: 'A beautiful colorful plant',
+      spanish: 'Una hermosa planta colorida'
     }
   },
   {
-    id: 'fish',
+    id: 'carro',
+    word: {
+      english: 'CAR',
+      spanish: 'CARRO'
+    },
+    correctDoodle: 'carro',
+    description: {
+      english: 'A vehicle with four wheels',
+      spanish: 'Un vehículo con cuatro ruedas'
+    }
+  },
+  {
+    id: 'pez',
     word: {
       english: 'FISH',
       spanish: 'PEZ'
     },
-    correctDoodle: 'fish',
+    correctDoodle: 'pez',
     description: {
       english: 'An animal that swims in water',
       spanish: 'Un animal que nada en el agua'
     }
   },
   {
-    id: 'bird',
+    id: 'cama',
     word: {
-      english: 'BIRD',
-      spanish: 'PÁJARO'
+      english: 'BED',
+      spanish: 'CAMA'
     },
-    correctDoodle: 'bird',
+    correctDoodle: 'cama',
     description: {
-      english: 'An animal that flies in the sky',
-      spanish: 'Un animal que vuela en el cielo'
+      english: 'A place where we sleep',
+      spanish: 'Un lugar donde dormimos'
     }
   },
   {
-    id: 'heart',
+    id: 'casa',
     word: {
-      english: 'HEART',
-      spanish: 'CORAZÓN'
+      english: 'HOUSE',
+      spanish: 'CASA'
     },
-    correctDoodle: 'heart',
+    correctDoodle: 'casa',
     description: {
-      english: 'A symbol of love',
-      spanish: 'Un símbolo de amor'
+      english: 'A place where people live',
+      spanish: 'Un lugar donde vive la gente'
     }
   },
   {
-    id: 'star',
+    id: 'perro',
     word: {
-      english: 'STAR',
-      spanish: 'ESTRELLA'
+      english: 'DOG',
+      spanish: 'PERRO'
     },
-    correctDoodle: 'star',
+    correctDoodle: 'perro',
     description: {
-      english: 'A twinkling light in the night sky',
-      spanish: 'Una luz brillante en el cielo nocturno'
+      english: 'A loyal pet that barks',
+      spanish: 'Una mascota leal que ladra'
+    }
+  },
+  {
+    id: 'arbol',
+    word: {
+      english: 'TREE',
+      spanish: 'ÁRBOL'
+    },
+    correctDoodle: 'arbol',
+    description: {
+      english: 'A tall plant with branches and leaves',
+      spanish: 'Una planta alta con ramas y hojas'
+    }
+  },
+  {
+    id: 'pato',
+    word: {
+      english: 'DUCK',
+      spanish: 'PATO'
+    },
+    correctDoodle: 'pato',
+    description: {
+      english: 'A bird that swims and quacks',
+      spanish: 'Un ave que nada y hace cuac'
     }
   }
 ];
