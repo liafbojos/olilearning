@@ -8,7 +8,7 @@
 @layer base {
   :root {
     /* Custom color palette - using only specified hex colors converted to HSL */
-    --background: 0 0% 98%;
+    --background: 20 25% 91%;  /* #ecd8d0 - New beige background */
     --foreground: 213 35% 30%;
 
     /* Card and surface colors */
@@ -41,9 +41,10 @@
     --color-pink: 353 59% 81%;     /* #f3a9b0 */
     --color-blue: 213 35% 67%;     /* #91adc6 */
     --color-teal: 180 28% 67%;     /* #97c0c0 */
+    --color-beige: 20 25% 91%;     /* #ecd8d0 - New beige */
 
     /* Muted colors using teal tones */
-    --muted: 180 28% 90%;
+    --muted: 20 25% 87%;           /* Slightly darker beige for muted elements */
     --muted-foreground: 213 35% 45%;
 
     /* Accent colors - Pink */
@@ -54,8 +55,8 @@
     --destructive: 7 79% 63%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 180 28% 85%;
-    --input: 180 28% 85%;
+    --border: 20 25% 85%;          /* Beige-toned borders */
+    --input: 20 25% 85%;
     --ring: 213 35% 67%;
 
     --radius: 1rem;
@@ -69,16 +70,16 @@
       hsl(43 95% 64%) 100%);   /* yellow */
     
     --gradient-sky: linear-gradient(180deg, 
-      hsl(213 35% 85%) 0%, 
-      hsl(180 28% 95%) 100%);
+      hsl(20 25% 94%) 0%,      /* lighter beige */
+      hsl(20 25% 91%) 100%);   /* main beige background */
     
     --gradient-card: linear-gradient(145deg, 
       hsl(0 0% 100%) 0%, 
-      hsl(180 28% 98%) 100%);
+      hsl(20 25% 96%) 100%);   /* beige-toned card gradient */
 
     /* Shadows using custom colors */
     --shadow-playful: 0 8px 25px -8px hsl(213 35% 67% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(180 28% 67% / 0.15);
+    --shadow-card: 0 4px 20px -4px hsl(20 25% 75% / 0.15);  /* beige-toned shadow */
     --shadow-fun: 0 10px 30px -10px hsl(353 59% 81% / 0.4);
 
     /* Animations */

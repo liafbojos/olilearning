@@ -43,7 +43,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-teal-50 p-4">
+    <div className="min-h-screen bg-background p-4">
       {/* Header */}
       <header className="text-center mb-8">
         <h1 className="text-4xl md:text-6xl font-bold text-primary mb-4">
