@@ -7,22 +7,34 @@ import WordDoodleActivity from '@/components/WordDoodleActivity';
 const animals = [
   {
     letter: 'A',
-    animalName: { english: 'Alligator', spanish: 'Caimán' },
+    animalName: { 
+      english: 'Alligator', 
+      spanish: 'Abeja' // Bee - starts with A
+    },
     motion: 'Snap arms like alligator jaws',
   },
   {
     letter: 'B', 
-    animalName: { english: 'Bear', spanish: 'Oso' },
+    animalName: { 
+      english: 'Bear', 
+      spanish: 'Ballena' // Whale - starts with B
+    },
     motion: 'Hug yourself like a bear',
   },
   {
     letter: 'C',
-    animalName: { english: 'Cat', spanish: 'Gato' },
+    animalName: { 
+      english: 'Cat', 
+      spanish: 'Conejo' // Rabbit - starts with C
+    },
     motion: 'Scratch with claws like a cat',
   },
   {
     letter: 'D',
-    animalName: { english: 'Dog', spanish: 'Perro' },
+    animalName: { 
+      english: 'Dog', 
+      spanish: 'Delfín' // Dolphin - starts with D
+    },
     motion: 'Pant with tongue out like a dog',
   }
 ];
