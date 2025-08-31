@@ -19,7 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'shooting-star': ['Shooting Star', 'cursive'],
+				'shooting-star': ['Fredoka One', 'cursive'],
 				'poppins': ['Poppins', 'sans-serif'],
 			},
 			colors: {

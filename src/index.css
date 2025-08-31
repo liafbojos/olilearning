@@ -190,19 +190,19 @@
   /* Letter display styles */
   .letter-display {
     @apply text-6xl font-bold;
-    font-family: 'Shooting Star', cursive;
+    font-family: 'Fredoka One', cursive;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   }
 
   /* Animal name styles */
   .animal-name {
     @apply text-2xl font-semibold;
-    font-family: 'Shooting Star', cursive;
+    font-family: 'Fredoka One', cursive;
   }
 
   /* Heading styles */
   .heading-font {
-    font-family: 'Shooting Star', cursive;
+    font-family: 'Fredoka One', cursive;
   }
 
   /* Language toggle */
