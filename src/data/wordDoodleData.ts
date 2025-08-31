@@ -12,12 +12,18 @@ export interface WordDoodle {
   };
 }
 
-import sunImg from '@/assets/doodles/sun.jpg';
+import sunImg from '@/assets/doodles/sun-generated.png';
 import houseImg from '@/assets/doodles/house.jpg';
 import carImg from '@/assets/doodles/car.jpg';
 import ballImg from '@/assets/doodles/ball.jpg';
 import flowerImg from '@/assets/doodles/flower.jpg';
 import treeImg from '@/assets/doodles/tree.jpg';
+import catImg from '@/assets/doodles/cat.png';
+import dogImg from '@/assets/doodles/dog.png';
+import fishImg from '@/assets/doodles/fish.png';
+import birdImg from '@/assets/doodles/bird.png';
+import heartImg from '@/assets/doodles/heart.png';
+import starImg from '@/assets/doodles/star.png';
 
 export const doodleImages = {
   sun: sunImg,
@@ -26,6 +32,12 @@ export const doodleImages = {
   ball: ballImg,
   flower: flowerImg,
   tree: treeImg,
+  cat: catImg,
+  dog: dogImg,
+  fish: fishImg,
+  bird: birdImg,
+  heart: heartImg,
+  star: starImg,
 };
 
 export const wordDoodles: WordDoodle[] = [
@@ -99,6 +111,78 @@ export const wordDoodles: WordDoodle[] = [
     description: {
       english: 'A tall plant with branches and leaves',
       spanish: 'Una planta alta con ramas y hojas'
+    }
+  },
+  {
+    id: 'cat',
+    word: {
+      english: 'CAT',
+      spanish: 'GATO'
+    },
+    correctDoodle: 'cat',
+    description: {
+      english: 'A furry pet that meows',
+      spanish: 'Una mascota peluda que maúlla'
+    }
+  },
+  {
+    id: 'dog',
+    word: {
+      english: 'DOG',
+      spanish: 'PERRO'
+    },
+    correctDoodle: 'dog',
+    description: {
+      english: 'A loyal pet that barks',
+      spanish: 'Una mascota leal que ladra'
+    }
+  },
+  {
+    id: 'fish',
+    word: {
+      english: 'FISH',
+      spanish: 'PEZ'
+    },
+    correctDoodle: 'fish',
+    description: {
+      english: 'An animal that swims in water',
+      spanish: 'Un animal que nada en el agua'
+    }
+  },
+  {
+    id: 'bird',
+    word: {
+      english: 'BIRD',
+      spanish: 'PÁJARO'
+    },
+    correctDoodle: 'bird',
+    description: {
+      english: 'An animal that flies in the sky',
+      spanish: 'Un animal que vuela en el cielo'
+    }
+  },
+  {
+    id: 'heart',
+    word: {
+      english: 'HEART',
+      spanish: 'CORAZÓN'
+    },
+    correctDoodle: 'heart',
+    description: {
+      english: 'A symbol of love',
+      spanish: 'Un símbolo de amor'
+    }
+  },
+  {
+    id: 'star',
+    word: {
+      english: 'STAR',
+      spanish: 'ESTRELLA'
+    },
+    correctDoodle: 'star',
+    description: {
+      english: 'A twinkling light in the night sky',
+      spanish: 'Una luz brillante en el cielo nocturno'
     }
   }
 ];
