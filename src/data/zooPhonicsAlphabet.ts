@@ -301,7 +301,7 @@ export const zooPhonicsAlphabet: ZooPhonicsAnimal[] = [
   }
 ];
 
-// Audio pronunciation function
+// Audio pronunciation function with enhanced Spanish accent
 export const playAnimalSound = (animal: ZooPhonicsAnimal, language: 'english' | 'spanish') => {
   console.log(`Playing sound for ${animal.animalName[language]} in ${language}`);
   
@@ -309,13 +309,61 @@ export const playAnimalSound = (animal: ZooPhonicsAnimal, language: 'english' | 
     const utterance = new SpeechSynthesisUtterance(
       language === 'english' 
         ? `${animal.letter}. ${animal.animalName.english}. ${animal.sound}` 
-        : `${animal.letter}. ${animal.animalName.spanish}`
+        : `${animal.letter}. ${animal.animalName.spanish}. Letra ${animal.letter}`
     );
     
-    utterance.lang = language === 'english' ? 'en-US' : 'es-ES';
-    utterance.rate = 0.8;
-    utterance.pitch = 1.2;
+    if (language === 'spanish') {
+      // Enhanced Spanish voice settings
+      utterance.lang = 'es-ES'; // European Spanish
+      utterance.rate = 0.7; // Slower for clearer pronunciation
+      utterance.pitch = 1.3; // Higher pitch for kids
+      
+      // Try to find a Spanish voice specifically
+      const voices = speechSynthesis.getVoices();
+      const spanishVoices = voices.filter(voice => 
+        voice.lang.includes('es') || 
+        voice.name.toLowerCase().includes('spanish') ||
+        voice.name.toLowerCase().includes('español')
+      );
+      
+      if (spanishVoices.length > 0) {
+        // Prefer Mexican Spanish, then European Spanish, then any Spanish
+        const mexicanVoice = spanishVoices.find(voice => voice.lang.includes('es-MX'));
+        const europeanVoice = spanishVoices.find(voice => voice.lang.includes('es-ES'));
+        const anySpanishVoice = spanishVoices[0];
+        
+        utterance.voice = mexicanVoice || europeanVoice || anySpanishVoice;
+      }
+      
+      // Add pauses for better pronunciation
+      utterance.text = `${animal.letter}... ${animal.animalName.spanish}... Letra ${animal.letter}`;
+      
+    } else {
+      // English settings
+      utterance.lang = 'en-US';
+      utterance.rate = 0.8;
+      utterance.pitch = 1.2;
+      
+      // Try to find an English voice
+      const voices = speechSynthesis.getVoices();
+      const englishVoices = voices.filter(voice => 
+        voice.lang.includes('en') || 
+        voice.name.toLowerCase().includes('english')
+      );
+      
+      if (englishVoices.length > 0) {
+        const usVoice = englishVoices.find(voice => voice.lang.includes('en-US'));
+        utterance.voice = usVoice || englishVoices[0];
+      }
+    }
     
-    speechSynthesis.speak(utterance);
+    // Ensure voices are loaded before speaking
+    if (speechSynthesis.getVoices().length === 0) {
+      speechSynthesis.addEventListener('voiceschanged', () => {
+        speechSynthesis.speak(utterance);
+      }, { once: true });
+    } else {
+      speechSynthesis.speak(utterance);
+    }
   }
 };
